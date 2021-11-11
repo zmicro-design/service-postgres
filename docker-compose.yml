@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  postgres:
+    restart: always
+    image: postgres:${SERVICE_POSTGRES_VERSION}
+    ports:
+      - ${SERVICE_POSTGRES_HOST}:${SERVICE_POSTGRES_PORT}:5432
+    environment:
+      TZ: Asia/Shanghai
+      POSTGRES_USER: ${SERVICE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${SERVICE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${SERVICE_POSTGRES_DB}
+    volumes:
+      - ${SERVICE_DATA}:/var/lib/postgresql/data
+
+
+networks:
+  default:
+    external: true
+    name: compose-ingress

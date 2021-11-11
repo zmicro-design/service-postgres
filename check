@@ -1,0 +1,44 @@
+#!/bin/bash
+
+load inquirer
+
+check() {
+  config::load_file $SERVICE_POSTGRES_CONFIG
+
+  if [ -z "$SERVICE_POSTGRES_HOST" ]; then
+    inquirer::text "请输入 SERVICE_POSTGRES_HOST:" value
+    config::set SERVICE_POSTGRES_HOST $value $SERVICE_POSTGRES_CONFIG
+  fi
+
+  if [ -z "$SERVICE_POSTGRES_PORT" ]; then
+    inquirer::text "请输入 SERVICE_POSTGRES_PORT:" value
+    config::set SERVICE_POSTGRES_PORT $value $SERVICE_POSTGRES_CONFIG
+  fi
+
+  if [ -z "$SERVICE_POSTGRES_DB" ]; then
+    inquirer::text "请输入 SERVICE_POSTGRES_DB:" value
+    config::set SERVICE_POSTGRES_DB $value $SERVICE_POSTGRES_CONFIG
+  fi
+
+  if [ -z "$SERVICE_POSTGRES_USER" ]; then
+    inquirer::text "请输入 SERVICE_POSTGRES_USER:" value
+    config::set SERVICE_POSTGRES_USER $value $SERVICE_POSTGRES_CONFIG
+  fi
+
+  if [ -z "$SERVICE_POSTGRES_DB" ]; then
+    inquirer::text "请输入 SERVICE_POSTGRES_DB:" value
+    config::set SERVICE_POSTGRES_DB $value $SERVICE_POSTGRES_CONFIG
+  fi
+  
+  # @TODO load again
+  config::load_file $SERVICE_POSTGRES_CONFIG
+
+  # @TODO
+  export SERVICE_POSTGRES_HOST=$SERVICE_POSTGRES_HOST
+  export SERVICE_POSTGRES_PORT=$SERVICE_POSTGRES_PORT
+  export SERVICE_POSTGRES_DB=$SERVICE_POSTGRES_DB
+  export SERVICE_POSTGRES_USER=$SERVICE_POSTGRES_USER
+  export SERVICE_POSTGRES_DB=$SERVICE_POSTGRES_DB
+}
+
+check $@
