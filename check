@@ -21,7 +21,7 @@ check() {
   fi
 
   if [ -z "$SERVICE_POSTGRES_PASSWORD" ]; then
-    inquirer::text "请输入 SERVICE_POSTGRES_PASSWORD:" value
+    inquirer::text "请输入 SERVICE_POSTGRES_PASSWORD:" value "$(os::uuid)"
     config::set SERVICE_POSTGRES_PASSWORD $value $SERVICE_POSTGRES_CONFIG
   fi
 
