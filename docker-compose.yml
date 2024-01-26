@@ -3,7 +3,7 @@ version: '3.7'
 services:
   postgres:
     restart: always
-    image: postgres:${SERVICE_POSTGRES_VERSION}
+    image: whatwewant/postgres:${SERVICE_POSTGRES_VERSION}
     ports:
       - ${SERVICE_POSTGRES_HOST}:${SERVICE_POSTGRES_PORT}:5432
     environment:

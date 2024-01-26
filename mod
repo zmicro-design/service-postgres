@@ -1,3 +1,3 @@
 NAME=postgres
-VERSION=v0.0.5
+VERSION=v1.0.1
 DESCRIPTION="Postgres Service"
